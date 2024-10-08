@@ -30,6 +30,14 @@ const searchStates = async searchText => {
         return state.name.match(regex) || state.abbr.match(regex);
     });
 
+    // prevent returning all data 
+    // on clearing search input
+    if(searchText.length === 0){
+
+        matches = [];
+
+    }
+
     // log matching results
     console.log(matches);
 };
