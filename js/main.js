@@ -15,9 +15,24 @@ const searchStates = async searchText => {
     // convert response to json
     const states = await res.json();
 
-    // log all data
-    console.log(states);
-}
+    // Get matches to current search input
+    // filter() loops through states 
+    // & returns an array based on multiple conditions
+    let matches = states.filter(state => {
+
+        // create regular expression for matching
+        // ^ - starts with whatever search text
+        // gi - global & case insensitive flags / matches both upper & lowercase
+        const regex = new RegExp(`^${searchText}`, 'gi');
+
+        // return array that matches regex
+        // match regex with state name or state abbreviation
+        return state.name.match(regex) || state.abbr.match(regex);
+    });
+
+    // log matching results
+    console.log(matches);
+};
 
 // pass search value to searchStates() on input
 search.addEventListener('input', () => searchStates(search.value));
