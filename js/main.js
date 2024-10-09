@@ -52,15 +52,15 @@ const outputHtml = matches => {
         // return an array of html strings
         const html = matches.map(match => `
             <div class="card card-body mb-1">
-                <h4>${match.name} (${match.abbr} <span class="text-primary">
+                <h4>${match.name} (${match.abbr}) <span class="text-primary">
                 ${match.capital}</span></h4>
                 <small>Lat: ${match.lat} / Long: ${match.long}</small> 
             </div>
             `)
             .join(''); // join html strings together 
 
-            // log html array
-            console.log(html);
+            // output to page
+            matchList.innerHTML = html;
 
     }
 
