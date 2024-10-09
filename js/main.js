@@ -56,7 +56,8 @@ const outputHtml = matches => {
                 ${match.capital}</span></h4>
                 <small>Lat: ${match.lat} / Long: ${match.long}</small> 
             </div>
-            `);
+            `)
+            .join(''); // join html strings together 
 
             // log html array
             console.log(html);
