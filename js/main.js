@@ -38,9 +38,33 @@ const searchStates = async searchText => {
 
     }
 
-    // log matching results
-    console.log(matches);
+    // output matching results to browser
+    outputHtml(matches);
+
 };
+
+// Show results in HTML
+const outputHtml = matches => {
+
+    if(matches.length > 0){
+
+        // map() returns an array from an array
+        // return an array of html strings
+        const html = matches.map(match => `
+            <div class="card card-body mb-1">
+                <h4>${match.name} (${match.abbr} <span class="text-primary">
+                ${match.capital}</span></h4>
+                <small>Lat: ${match.lat} / Long: ${match.long}</small> 
+            </div>
+            `);
+
+            // log html array
+            console.log(html);
+
+    }
+
+}
+
 
 // pass search value to searchStates() on input
 search.addEventListener('input', () => searchStates(search.value));
